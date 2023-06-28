@@ -1,0 +1,28 @@
+[13-Apr-2022 22:07:40 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[14-Apr-2022 02:11:43 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[20-Apr-2022 23:11:44 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[21-Apr-2022 08:08:06 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[21-May-2022 10:23:34 UTC] PHP Parse error:  syntax error, unexpected 'function' (T_FUNCTION), expecting ';' or ',' in /home/centralfrozen/centralfrozen.net/administrator/tes.php on line 7
+[21-May-2022 10:23:35 UTC] PHP Parse error:  syntax error, unexpected 'function' (T_FUNCTION), expecting ';' or ',' in /home/centralfrozen/centralfrozen.net/administrator/tes.php on line 7
+[01-Jun-2022 03:51:10 UTC] PHP Warning:  mysqli_connect(): (HY000/2002): Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2) in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 30
+[01-Jun-2022 03:51:10 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 77
+[01-Jun-2022 03:51:10 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 79
+[01-Jun-2022 03:51:10 UTC] PHP Notice:  Undefined offset: 0 in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 51
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 77
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, null given in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 79
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Notice:  Undefined offset: 0 in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 102
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Notice:  Undefined offset: 1 in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 103
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Notice:  Trying to access array offset on value of type null in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 103
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Notice:  Undefined offset: 2 in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 104
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Notice:  Trying to access array offset on value of type null in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 104
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Notice:  Undefined offset: 3 in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 105
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Notice:  Trying to access array offset on value of type null in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 105
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Notice:  Undefined offset: 5 in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 107
+[01-Jun-2022 10:51:10 Asia/Jakarta] PHP Notice:  Trying to access array offset on value of type null in /home/centralfrozen/centralfrozen.net/include/fungsi.php on line 107
+[08-May-2023 16:49:47 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[08-May-2023 16:51:19 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[08-May-2023 16:51:45 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[08-May-2023 16:53:26 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[08-May-2023 16:55:19 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[08-May-2023 16:56:09 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42
+[08-May-2023 16:56:17 Asia/Jakarta] PHP Notice:  Undefined variable: kp in /home/centralfrozen/centralfrozen.net/administrator/index.php on line 42

@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^singlepost/([a-zA-Z0-9-/]+)$ singlepost.php?judul=$1 [NC,L]
+#RewriteRule ^singlepost/([0-9a-zA-Z]+) singlepost.php?judul=$1
+#RewriteRule ^singlepost/([a-zA-Z0-9-/]+)$ singlepost.php?judul=$1  
+#RewriteRule ^singlepost/([a-zA-Z-0-9-]+)/ singlepost.php?judul=$1  
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+</IfModule>
