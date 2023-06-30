@@ -2,10 +2,10 @@
 session_start();
 
 if (isset($_SESSION["email"])) {
-    header("location: datamaster");
+    header("location: ../datamaster");
     exit;
 }
-require 'include/fungsi.php';
+require '../include/fungsi.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,7 +149,7 @@ require 'include/fungsi.php';
                 swal.fire("jabatan belum di isi!", "", "error")
             } else {
                 $.ajax({
-                    url: 'models/reg.php',
+                    url: '../models/reg.php',
                     type: 'post',
                     data: data,
                     enctype: 'multipart/form-data',

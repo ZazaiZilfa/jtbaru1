@@ -1,4 +1,4 @@
-<?php require "include/fungsi.php"; ?>
+<?php require "../include/fungsi.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">

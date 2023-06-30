@@ -2,10 +2,10 @@
 session_start();
 
 if (isset($_SESSION["email"])) {
-    header("location: datamaster");
+    header("location: ../datamaster");
     exit;
 }
-require 'include/fungsi.php';
+require '../include/fungsi.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,7 +161,7 @@ require 'include/fungsi.php';
                 })
             } else {
                 $.ajax({
-                    url: 'models/login.php',
+                    url: '../models/login.php',
                     type: 'post',
                     data: data,
                     enctype: 'multipart/form-data',
