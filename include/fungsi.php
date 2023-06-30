@@ -297,7 +297,7 @@ function hapuspembayaran($id)
 
 	return mysqli_affected_rows($conn);
 }
-$company = query("SELECT * FROM companypanel01 WHERE baseurl = 'centralfrozen' ")[0];
+$company = query("SELECT * FROM companypanel01 WHERE baseurl = 'jt' ")[0];
 $year = date('Y');
 $month = date('m');
 
