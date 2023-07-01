@@ -1,10 +1,10 @@
 <?php
-session_start();
+// session_start();
 
-if (isset($_SESSION["email"])) {
-    header("location: ../datamaster");
-    exit;
-}
+// if (isset($_SESSION["email"])) {
+//     header("location: ../datamaster");
+//     exit;
+// }
 require '../include/fungsi.php';
 ?>
 <!DOCTYPE html>

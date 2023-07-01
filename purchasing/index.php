@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-    header("location:../default/index"); // jika belum login, maka dikembalikan ke index
+    header("location:../index"); // jika belum login, maka dikembalikan ke index
     exit;
 }
 require '../include/fungsi.php';

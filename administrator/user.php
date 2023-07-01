@@ -7,9 +7,11 @@ if (!isset($_SESSION['email'])) {
 require '../include/fungsi.php';
 require '../include/fungsi_rupiah.php';
 require '../include/fungsi_indotgl.php';
-require 'c_admin/c_menu.php';
-$bagian = "Administrator";
-$juhal = "Menu";
+
+$kodeuser = query("SELECT * FROM user ORDER BY id ASC ");
+
+$bagian = "Administtrator";
+$juhal = "User";
 ?>
 
 <!DOCTYPE html>
@@ -38,34 +40,63 @@ $juhal = "Menu";
 
                 <!-- Start Content-->
                 <div class="container-fluid">
+                    <!-- terima msg -->
+                    <?php if (isset($_SESSION['msg'])) : ?>
+                        <div id="msg" data-msg="<?= $_SESSION["msg"] ?>"></div>
+                        <?php unset($_SESSION['msg']); ?>
+                    <?php endif ?>
+                    <!-- akhir terima msg -->
 
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="mb-3 header-title">Input Menu Sidebar</h4>
+                                    <h4 class="mb-3 header-title">Input Sub Menu Sidebar</h4>
 
-                                    <form class="form-horizontal" id="formmenu">
-                                        <input type="hidden" name="inputmenu">
+                                    <form class="form-horizontal" id="add-user" method="post">
+
+
                                         <div class="row mb-2">
-
-                                            <label class="col-4 col-xl-5 col-form-label">Nama Menu</label>
+                                            <label class="col-4 col-xl-5 col-form-label">Nama</label>
                                             <div class="col-8 col-xl-7">
-                                                <input type="text" class="form-control" required name="nmenu" id="nmenu">
+                                                <input autofocus type="text" class="form-control" required id="name" name="name" placeholder="Enter your name"></input>
                                             </div>
                                         </div>
                                         <div class="row mb-2">
-                                            <label class="col-4 col-xl-5 col-form-label">URL</label>
+                                            <label class="col-4 col-xl-5 col-form-label">Email address</label>
                                             <div class="col-8 col-xl-7">
-                                                <input type="text" class="form-control" required name="nurl" id="nurl">
+                                                <input type="email" class="form-control" required name="email" id="emailAddress" required placeholder="Enter your email"></input>
                                             </div>
                                         </div>
+                                        <div class="row mb-2">
+                                            <label class="col-4 col-xl-5 col-form-label">Password</label>
+                                            <div class="col-8 col-xl-7">
+                                                <input class="form-control" type="password" required id="password" name="password" placeholder="Enter password">
+                                                <input type="hidden" id="outlet" name="outlet" value="<?= $company['kodeoutlet']; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
 
+                                            <label class="col-4 col-xl-5 col-form-label">Choose Jabatan</label>
+                                            <div class="col-8 col-xl-7">
+                                                <select class="form-control" name="role_id" id="role_id">
+                                                    <option>User Level</option>
+                                                    <option value="1">Admin</option>
+                                                    <option value="2">Bos</option>
+                                                    <option value="3">Administratif</option>
+                                                    <option value="4">Kepala Proyek</option>
+                                                    <option value="5">Kepala Maintenance</option>
+                                                    <option value="6">Staff Proyek</option>
+                                                    <option value="7">Staff Maintenance</option>
+                                                </select>
 
+                                            </div>
+                                        </div>
 
                                         <div class="justify-content-end row">
                                             <div class="col-8 col-xl-8">
-                                                <button type="submit" class="btn btn-info waves-effect waves-light" id="tombol-menu">Input Menu</button>
+                                                <input type="hidden" name="tambah-user">
+                                                <button type="submit" class="btn btn-info waves-effect waves-light" name="tombol-simpan" id="tombol-simpan">Input User</button>
                                             </div>
                                         </div>
                                     </form>
@@ -85,40 +116,42 @@ $juhal = "Menu";
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Menu</th>
-                                                <th>URL</th>
-                                                <th>Icon</th>
-                                                <th>Action</th>
+                                                <th>Nama</th>
+                                                <th>Email</th>
+                                                <th>Role_id</th>
+                                                <th>Status</th>
+                                                <th>Action </th>
                                             </tr>
                                         </thead>
 
                                         <?php $i = 1; ?>
                                         <tbody>
-                                            <?php foreach ($kodemenu as $row) :
-                                            ?>
+                                            <?php foreach ($kodeuser as $row) : ?>
                                                 <tr>
-                                                    <td width=" 2%" ;><?= $i ?></td>
-                                                    <td><?= $row["menu"] ?></td>
-                                                    <td><?= $row["url"] ?></td>
-                                                    <td><?= $row["icon"] ?></td>
-
+                                                    <td width="2%" ;><?= $i ?></td>
+                                                    <td><?= $row["name"] ?></td>
+                                                    <td><?= $row["email"] ?></td>
+                                                    <td><?= $row["role_id"] ?></td>
                                                     <td>
-                                                        <a class="badge btn-success edit-row rounded-pill waves-effect waves-light tombol-edit" data-bs-toggle="modal" data-bs-target="#modaledit" data-id="<?= $row['id']; ?>" data-menu="<?= $row['menu']; ?>" data-iconn="<?= $row['icon'] ?>" data-url="<?= $row['url']; ?>" id=""><i class="ti-pencil"></i></a>
-
-
                                                         <?php
-                                                        $iddel = $row["id"];
-                                                        if ($_SESSION['role_id'] == 1) :
+                                                        if ($row["is_active"] != 1) {
+                                                            echo "Inactive";
+                                                        } else {
+                                                            echo "Active";
+                                                        }
                                                         ?>
-                                                            |
+                                                    </td>
+                                                    <td>
+                                                        <a class="badge btn-success edit-row rounded-pill waves-effect waves-light tombol-edit" data-bs-toggle="modal" data-bs-target="#modaledit" data-id="<?= $row['id']; ?>" data-name="<?= $row['name']; ?>" data-email="<?= $row['email']; ?>" data-roleid="<?= $row['role_id']; ?>" data-active="<?= $row['is_active']; ?>" id=""><i class="ti-pencil"></i></a>
 
-                                                            <input type="hidden" class="delete_id_value" value="<?= $iddel ?>">
+                                                        |
 
-                                                            <a class="badge btn-danger remove-row rounded-pill waves-effect waves-light tombol-hapus" data-id="<?= $row['id'] ?>">
-                                                                <i class="fe-trash-2"></i>
-                                                            </a>
-                                                            <!-- <a class="on-default remove-row badge badge-danger tombol-deletesupplier"><i class="fa fa-trash-o"></i></a> -->
-                                                        <?php endif ?>
+                                                        <input type="hidden" class="delete_id_value" value="<?= $row["id"] ?>">
+                                                        <a class="badge btn-danger remove-row rounded-pill waves-effect waves-light tombol-hapus" data-id="<?= $row['id'] ?>">
+                                                            <i class="fe-trash-2"></i>
+                                                        </a>
+                                                        <!-- <a class="on-default remove-row badge badge-danger tombol-deletesupplier"><i class="fa fa-trash-o"></i></a> -->
+
                                                     </td>
                                                 </tr>
                                                 <?php $i++; ?>
@@ -129,7 +162,7 @@ $juhal = "Menu";
                                 </div>
                             </div>
 
-                        </div>
+                        </div> <!-- end col -->
                     </div>
                     <!-- end row -->
 
@@ -139,38 +172,56 @@ $juhal = "Menu";
             </div> <!-- content -->
 
             <?php require "../include/rightsidebar.php"; ?>
-
             <div id="modaledit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Edit Menu</h4>
+                            <h4 class="modal-title">Edit User</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form id="formupdate">
                             <div class="modal-body">
                                 <div class="row">
-                                    <input type="hidden" class="id" name="updatemenu">
+                                    <input type="hidden" class="id" name="update-user">
 
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Nama Menu</label>
-                                                <input type="text" class="menu form-control" id="umenu" name="umenu">
+                                                <label class="form-label">Nama</label>
+                                                <input type="text" class="name form-control" id="uname" name="uname">
                                             </div>
                                         </div>
                                         <div class=" col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Url</label>
-                                                <input type="text" class="url form-control" id="uurl" name="uurl">
+                                                <label class="form-label">email</label>
+                                                <input type="text" class="email form-control" id="uemail" name="uemail">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Choose Jabatan</label>
+                                                <select class="form-control select2 urole_id" name="urole_id" id="urole_id">
+                                                    <option>User Level</option>
+                                                    <option value="1">Admin</option>
+                                                    <option value="2">Bos</option>
+                                                    <option value="3">Administratif</option>
+                                                    <option value="4">Kepala Proyek</option>
+                                                    <option value="5">Kepala Maintenance</option>
+                                                    <option value="6">Staff Proyek</option>
+                                                    <option value="7">Staff Maintenance</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div class=" col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Icon</label>
-                                                <input type="text" class="icon form-control" id="uicon" name="uicon">
+                                                <label for="uaktif" class="form-label">Status</label>
+                                                <select id="uaktif" name="uaktif" class="form-control select2 uaktif">
+                                                    <option value="0">Inactive</option>
+                                                    <option value="1">Active</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -193,28 +244,28 @@ $juhal = "Menu";
 </body>
 
 </html>
-
 <script>
-    // function myFunction() {
-    //     document.getElementById("formmenu").enctype = "multipart/form-data";
-    // }
     $(document).ready(function() {
-        $('#tombol-menu').click(function(e) {
+        // tambah data
+        $('#tombol-simpan').click(function(e) {
             e.preventDefault();
-            var dataform = $('#formmenu')[0];
+            var dataform = $('#add-user')[0];
             var data = new FormData(dataform);
-            // console.log(data);
-
-            var nmenu = $('#nmenu').val();
-            var nurl = $('#nurl').val();
-
+            var name = $('#name').val();
+            var emailAddress = $('#emailAddress').val();
+            var outlet = $('#kodeoutlet').val();
+            var password = $('#password').val();
+            var role_id = $('#role_id').val();
             //alert(ngambar)
-            if (nmenu == "") {
-                swal.fire("Nama menu belum di isi!", "", "error")
-            } else if (nurl == "") {
-                swal.fire("URL belum di isi!", "", "error")
+            if (name == "") {
+                swal.fire("Username belum di isi!", "", "error")
+            } else if (emailAddress == "") {
+                swal.fire("Email belum di isi!", "", "error")
+            } else if (outlet == "") {
+                swal.fire("Outlet kosong!", "", "error")
+            } else if (role_id == "user level") {
+                swal.fire("jabatan belum di isi!", "", "error")
             } else {
-
                 $.ajax({
                     url: 'm_admin/input.php',
                     type: 'post',
@@ -230,63 +281,74 @@ $juhal = "Menu";
                     success: function(hasil) {
                         // alert(hasil);
                         $('.spinn').hide();
-                        // console.log(hasil);
+                        console.log(hasil);
                         //sukses
                         if (hasil == 1) {
-                            swal.fire("Nama menu sudah ada!", "", "error")
+                            swal.fire("Email sudah terdaftar", "", "error")
                         } else if (hasil == 2) {
-                            swal.fire("URL Sudah ada ", "", "error")
+                            swal.fire("Input Gagal!", "", "error")
                         } else if (hasil == 3) {
-                            swal.fire("Input Eror, Coba Lagi ", "", "error")
-                        } else if (hasil == 4) {
                             swal.fire({
-                                title: "Update Berhasil!",
-                                type: "success",
-                                //text: "I will close in 2 seconds.",
-                                timer: 2000,
-                                showConfirmButton: false
-                            })
-                            setTimeout(location.reload.bind(location), 800);
+                                    title: "Input Berhasil!",
+                                    type: "success",
+                                    //text: "I will close in 2 seconds.",
+                                    timer: 1000,
+                                    showConfirmButton: !1
+                                })
+                                .then(function() {
+                                    location.reload();
+                                })
+                        } else if (hasil == 4) {
+                            swal.fire("Username sudah terdaftar", "", "error")
 
                         }
                     }
                 });
             }
         })
+        // akhir tambah data
 
-        $('.tombol-edit').on('click', function() {
+        $('#responsive-datatable').on('click', '.tombol-edit', function() {
 
             const id = $(this).data('id');
-            const menu = $(this).data('menu');
-            const url = $(this).data('url');
-            const icon = $(this).data('iconn');
+            const name = $(this).data('name');
+            const email = $(this).data('email');
+            const role_id = $(this).data('roleid');
+            const aktif = $(this).data('active');
 
             $('.id').val(id);
-            $('.menu').val(menu);
-            $('.url').val(url);
-            $('.icon').val(icon);
+            $('.name').val(name);
+            $('.email').val(email);
+            $('.urole_id').val(role_id).trigger('change');
+            $('.uaktif').val(aktif).trigger('change');
+
             $('#modaledit').modal('show');
         });
 
         $('#tombol-update').click(function(e) {
 
-            // alert('ok');
+
             e.preventDefault();
             var dataform = $('#formupdate')[0];
             var data = new FormData(dataform);
             // console.log(data);
 
-            var umenu = $('#umenu').val();
-            var uurl = $('#uurl').val();
-            var uicon = $('#uicon').val();
+            var uname = $('#uname').val();
+            var uemail = $('#uemail').val();
+            var urole_id = $('#urole_id').val();
+            var uaktif = $('#uaktif').val();
 
             // console.log(umenu);
             // console.log(uurl);
 
-            if (umenu == "") {
-                swal.fire("Nama menu belum di isi!", "", "error")
-            } else if (uurl == "") {
-                swal.fire("URL belum di isi!", "", "error")
+            if (uname == "") {
+                swal.fire("Nama belum di isi!", "", "error")
+            } else if (uemail == "") {
+                swal.fire("email belum di isi!", "", "error")
+            } else if (urole_id == "") {
+                swal.fire("jabatan belum di isi!", "", "error")
+            } else if (uaktif == "") {
+                swal.fire("Status belum di isi!", "", "error")
             } else {
                 $.ajax({
                     url: 'm_admin/edit.php',
@@ -297,9 +359,11 @@ $juhal = "Menu";
                     contentType: false,
                     cache: false,
                     beforeSend: function() {
-                        $('.spinn').show();
+                        // $('.spinn').show();
+                        $('.rowspin').css('display', 'flex');
                     },
                     success: function(hasil) {
+                        $('.spinn').hide();
                         // alert(hasil);
                         console.log(hasil);
                         //sukses
@@ -319,12 +383,15 @@ $juhal = "Menu";
                     }
                 });
             }
-        })
 
+
+
+
+        })
         $('#responsive-datatable').on('click', '.tombol-hapus', function(e) {
 
             // console.log('ok');
-            const tabel = 'user_menu';
+            const tabel = 'user';
             const id = $(this).data('id');
 
             e.preventDefault();
@@ -378,6 +445,5 @@ $juhal = "Menu";
                 }
             });
         })
-
     })
 </script>
