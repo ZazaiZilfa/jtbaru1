@@ -1,7 +1,7 @@
 <?php
 
 //koneksi database
-$conn = mysqli_connect('localhost', 'root', '', 'javatechnic_jt');
+$conn = mysqli_connect('localhost', 'root', '', 'javatechnic_jt1');
 // $conn = mysqli_connect('javatechnic.co.id','javatechnic_jtcoid','1qjlkTA.Bbf@', 'javatechnic_jt');
 // if (!$conn) {
 //     die("Koneksi gagal: " . mysqli_connect_error());
@@ -301,7 +301,7 @@ $company = query("SELECT * FROM companypanel01 WHERE baseurl = 'jt' ")[0];
 $year = date('Y');
 $month = date('m');
 
-$condition = query("SELECT status FROM kondisi01 WHERE 1 ORDER BY id ASC");
+$condition = query("SELECT status FROM kondisi WHERE 1 ORDER BY id ASC");
 $kondisi = $condition[0];
 $statusWA = $condition[1]['status'];
 $statusSunday = $condition[2]['status'];
