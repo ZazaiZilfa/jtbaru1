@@ -314,7 +314,7 @@ $juhal = "Barang";
                                                         </a>
                                                         <?php
                                                         $iddel = $row["id"];
-                                                        if ($_SESSION['role_id'] === '1') :
+                                                        if ($_SESSION['role_id'] === 1) :
                                                         ?>
                                                             |
                                                             <input type="hidden" class="delete_id_value" value="<?= $iddel ?>">
