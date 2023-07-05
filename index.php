@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION["email"])) {
-    header("location: datamaster");
+    header("location: datamaster/");
     exit;
 }
 require 'include/fungsi.php';
