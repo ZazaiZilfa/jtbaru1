@@ -4,27 +4,15 @@
     <div class="h-100" data-simplebar>
 
         <!-- User box -->
-        <div class="user-box text-center">
+        <!-- <div class="user-box text-center">
 
             <img src="../assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail avatar-md">
 
 
             <p class="text-muted left-user-info">Admin Head</p>
 
-            <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a href="#" class="text-muted left-user-info">
-                        <i class="mdi mdi-cog"></i>
-                    </a>
-                </li>
 
-                <li class="list-inline-item">
-                    <a href="#">
-                        <i class="mdi mdi-power"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        </div> -->
 
         <!--- Sidemenu -->
         <div id="sidebar-menu">

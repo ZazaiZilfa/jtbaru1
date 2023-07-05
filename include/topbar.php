@@ -17,17 +17,30 @@
 
 
 
-        <li class="dropdown notification-list topbar-dropdown">
+        <li classs="dropdown notification-list topbar-dropdown">
             <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
+
                 <span class="pro-user-name ms-1">
-                    Nowak <i class="mdi mdi-chevron-down"></i>
+                    <?php
+                    $email = $_SESSION['email'];
+                    $dataadmin = query("SELECT * FROM user WHERE email = '$email'")[0];
+                    if ($dataadmin['role_id'] != "0") {
+
+                        $nj = "User";
+                    } elseif ($dataadmin['role_id'] = "1") {
+                        $nj = "Admin";
+                    } else {;
+                        $nj = "Super User";
+                    }
+                    $username = $dataadmin['name'];
+                    ?>
+                    <?= strtoupper($username) . " - " . $nj; ?> <i class="mdi mdi-chevron-down"></i>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
                 <!-- item-->
                 <div class="dropdown-header noti-title">
-                    <h6 class="text-overflow m-0">Welcome !</h6>
+                    <h6 class="text-overflow m-0">Welcome</h6>
                 </div>
 
                 <!-- item-->
@@ -45,7 +58,7 @@
                 <div class="dropdown-divider"></div>
 
                 <!-- item-->
-                <a href="auth-logout.html" class="dropdown-item notify-item">
+                <a href="../models/logout.php" class="dropdown-item notify-item">
                     <i class="fe-log-out"></i>
                     <span>Logout</span>
                 </a>
