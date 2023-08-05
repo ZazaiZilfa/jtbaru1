@@ -1,7 +1,7 @@
 <?php
 
 //koneksi database
-$conn = mysqli_connect('localhost', 'root', '', 'javatechnic_jt1');
+$conn = mysqli_connect('localhost', 'root', '', 'javatechnic_jxc');
 // $conn = mysqli_connect('javatechnic.co.id','javatechnic_jtcoid','1qjlkTA.Bbf@', 'javatechnic_jt');
 // if (!$conn) {
 //     die("Koneksi gagal: " . mysqli_connect_error());

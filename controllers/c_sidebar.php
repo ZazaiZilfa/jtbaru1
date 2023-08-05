@@ -1,6 +1,6 @@
 <?php
 if ($_SESSION['role_id'] != "0") {
-    if ($_SESSION['outlet'] == "out00" || $_SESSION['outlet'] == "out001") {
+    if ($_SESSION['outlet'] == "OUT000" || $_SESSION['outlet'] == "OUT001") {
         if ($_SESSION['role_id'] = "1") {
             $kodeusermenu = query("SELECT * FROM user_menu WHERE id<8 ORDER BY urut ASC ");
         } else if ($_SESSION['role_id'] = "2") {

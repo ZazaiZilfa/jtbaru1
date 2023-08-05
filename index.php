@@ -26,11 +26,14 @@ require 'include/fungsi.php';
 
 
     <!-- App css -->
-    <link href="assets/css/config/default/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="assets/css/config/default/bootstrap.min.css" rel="stylesheet" type="text/css"
+        id="bs-default-stylesheet" />
     <link href="assets/css/config/default/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-    <link href="assets/css/config/default/bootstrap-dark.min.css" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled="disabled" />
-    <link href="assets/css/config/default/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet" disabled="disabled" />
+    <link href="assets/css/config/default/bootstrap-dark.min.css" rel="stylesheet" type="text/css"
+        id="bs-dark-stylesheet" disabled="disabled" />
+    <link href="assets/css/config/default/app-dark.min.css" rel="stylesheet" type="text/css" id="app-dark-stylesheet"
+        disabled="disabled" />
 
     <!-- icons -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
@@ -60,15 +63,18 @@ require 'include/fungsi.php';
 
                             <form id="formmasuk" action="">
                                 <input type="hidden" id="login" name="login" value="login">
-                                <input type="hidden" id="kodeoutlet" name="kodeoutlet" value="<?php echo $company['kodeoutlet']; ?>">
+                                <input type="hidden" id="kodeoutlet" name="kodeoutlet"
+                                    value="<?php echo $company['kodeoutlet']; ?>">
                                 <div class="mb-3">
                                     <label for="emailaddress" class="form-label">Email address</label>
-                                    <input class="form-control" type="email" required autofocus autocomplete="username" id="email" name="email" placeholder="Enter your email">
+                                    <input class="form-control" type="email" required autofocus autocomplete="username"
+                                        id="email" name="email" placeholder="Enter your email">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input class="form-control" type="password" required id="password" name="password" placeholder="Enter your password">
+                                    <input class="form-control" type="password" required id="password" name="password"
+                                        placeholder="Enter your password">
                                 </div>
 
                                 <div class="mb-3">
@@ -76,7 +82,8 @@ require 'include/fungsi.php';
                                 </div>
 
                                 <div class="mb-3 d-grid text-center">
-                                    <button class="btn btn-primary" type="submit" id="tombol-simpan" name="tombol-simpan"> Log In </button>
+                                    <button class="btn btn-primary" type="submit" id="tombol-simpan"
+                                        name="tombol-simpan"> Log In </button>
                                 </div>
                             </form>
 
@@ -122,91 +129,91 @@ require 'include/fungsi.php';
 </html>
 
 <script>
-    $(document).ready(function() {
-        //     document.querySelector("#passwordToogle").addEventListener('click', () => {
-        //         const password = document.querySelector("#password");
-        //         const pwIcon = document.querySelector("#pwIcon");
+$(document).ready(function() {
+    //     document.querySelector("#passwordToogle").addEventListener('click', () => {
+    //         const password = document.querySelector("#password");
+    //         const pwIcon = document.querySelector("#pwIcon");
 
-        //         if (password.type === "password") {
-        //             password.type = "text";
-        //             pwIcon.className = "fas fa-eye input-group-text";
-        //         } else {
-        //             password.type = "password";
-        //             pwIcon.className = "fas fa-eye-slash input-group-text";
-        //         }
-        //     })
+    //         if (password.type === "password") {
+    //             password.type = "text";
+    //             pwIcon.className = "fas fa-eye input-group-text";
+    //         } else {
+    //             password.type = "password";
+    //             pwIcon.className = "fas fa-eye-slash input-group-text";
+    //         }
+    //     })
 
-        $('#tombol-simpan').click(function(e) {
-            e.preventDefault();
-            var dataform = $('#formmasuk')[0];
-            var data = new FormData(dataform);
+    $('#tombol-simpan').click(function(e) {
+        e.preventDefault();
+        var dataform = $('#formmasuk')[0];
+        var data = new FormData(dataform);
 
-            //var input_foto = $('#input_foto').val();
-            var login = $('#login').val();
-            var email = $('#email').val();
-            var password = $('#password').val();
-            var kodeoutlet = $('#kodeoutlet').val();
+        //var input_foto = $('#input_foto').val();
+        var login = $('#login').val();
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var kodeoutlet = $('#kodeoutlet').val();
 
-            if (email == "") {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Email belum diisi !'
-                })
-            } else if (password == "") {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Password belum diisi !'
-                })
-            } else {
-                $.ajax({
-                    url: 'models/login.php',
-                    type: 'post',
-                    data: data,
-                    enctype: 'multipart/form-data',
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    success: function(hasil) {
-                        //sukses
-                        if (hasil == 1) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Gagal...',
-                                text: 'Email Belum terdaftar'
+        if (email == "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Email belum diisi !'
+            })
+        } else if (password == "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password belum diisi !'
+            })
+        } else {
+            $.ajax({
+                url: 'models/login.php',
+                type: 'post',
+                data: data,
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function(hasil) {
+                    //sukses
+                    if (hasil == 1) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal...',
+                            text: 'Email Belum terdaftar'
+                        });
+
+                    } else if (hasil == 2) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal...',
+                            text: 'Password Salah'
+                        });
+                    } else if (hasil == 3) {
+                        // console.log(hasil);
+                        Swal.fire({
+                                position: "top-end",
+                                type: "success",
+                                title: "Login Berhasil",
+                                showConfirmButton: !1,
+                                timer: 1000
+                            })
+                            .then(function() {
+                                location.reload('');
+                                // setTimeout(location.reload.bind(location), 800);
+                                document.location.href = 'menu';
                             });
-
-                        } else if (hasil == 2) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Gagal...',
-                                text: 'Password Salah'
-                            });
-                        } else if (hasil == 3) {
-                            // console.log(hasil);
-                            Swal.fire({
-                                    position: "top-end",
-                                    type: "success",
-                                    title: "Login Berhasil",
-                                    showConfirmButton: !1,
-                                    timer: 1000
-                                })
-                                .then(function() {
-                                    location.reload('');
-                                    // setTimeout(location.reload.bind(location), 800);
-                                    // document.location.href = 'administrator';
-                                });
-                        } else if (hasil == 4) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Gagal...',
-                                text: 'Akun anda tidak terdaftar pada Outlet ini'
-                            });
-                        }
+                    } else if (hasil == 4) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Gagal...',
+                            text: 'Akun anda tidak terdaftar pada Outlet ini'
+                        });
                     }
-                });
-            }
-        })
-    });
+                }
+            });
+        }
+    })
+});
 </script>
